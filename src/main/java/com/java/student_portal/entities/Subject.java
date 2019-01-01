@@ -33,6 +33,7 @@ public class Subject implements Serializable{
 	@JoinColumn(name = "course_code",nullable = false,referencedColumnName = "code")
 	private Course course;
 	
+	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "department_code",nullable = false,referencedColumnName = "code")
 	private Department department;

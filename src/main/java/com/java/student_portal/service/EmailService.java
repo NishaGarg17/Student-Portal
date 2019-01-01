@@ -42,10 +42,13 @@ public class EmailService {
 		return edtoList;
 	}
 	 List<Email> transformEmail(List<EmailDto> edtoList,String uniqueKey) {
-		List emailList = new ArrayList();
-		if(uniqueKey.matches("[0-9]")) {
+		System.out.println("uniqueKey is: " + uniqueKey);
+		System.out.println("uniqueKey Matched? " + uniqueKey.matches("[0-9]+"));
+		List<Email> emailList = new ArrayList<Email>();
+		if(uniqueKey.matches("[0-9]+")) {
+			System.out.println("Roll NO matced digit criteria");
 			emailList =  transformStudentEmail(edtoList, uniqueKey);
-		} else if(uniqueKey.matches("[0-9a-zA-Z]")) {
+		} else if(uniqueKey.matches("[0-9a-zA-Z]+")) {
 			 emailList =  transformTeacherEmail(edtoList, uniqueKey);
 		} 
 		return emailList;
@@ -53,6 +56,7 @@ public class EmailService {
 
 		}
 	 	List<Email> transformStudentEmail(List<EmailDto> edtoList,String stuRollNo) {
+	 		System.out.println("Student email transform");
 			List<Email> emailList = new ArrayList<>();
 			edtoList.forEach (edto-> {
 				Email email = new Email();

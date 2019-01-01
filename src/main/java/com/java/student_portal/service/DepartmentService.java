@@ -31,8 +31,11 @@ public class DepartmentService {
 		department.setDisplayName(departmentDto.getDisplayName());
 		department.setIsActive(departmentDto.getIsActive());
 		List<String> courseCodes = departmentDto.getCourseCodes();
+		System.out.println("courseCodes are: " + courseCodes.size());
 		List<Course> courseList = courseRepo.findByCodeIn(courseCodes);
+		System.out.println("courseList is: " + courseList.size() );
 		if(courseList.size() != courseCodes.size()) {
+			System.out.println("inside IFFFFFFF");
 			return ResponseMessage.VALIDATION_ERROR;
 		}
 		department.setCourse(courseList);

@@ -48,10 +48,10 @@ public class Teacher implements Serializable {
 	inverseJoinColumns = {@JoinColumn(name = "phone_id")})
 	private List<Phone> phoneList;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "S_Teacher_Subject",
-	joinColumns = {@JoinColumn(name = "teacher_id")},
-	inverseJoinColumns = {@JoinColumn(name = "subjectName")})
+	joinColumns = {@JoinColumn(name = "teacher_name", referencedColumnName = "name")},
+	inverseJoinColumns = {@JoinColumn(name = "subjectName", referencedColumnName = "subjectName")})
 	private List<Subject> subjectList;
 
 	public String getName() {

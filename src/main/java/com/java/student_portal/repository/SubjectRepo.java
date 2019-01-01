@@ -9,5 +9,5 @@ import com.java.student_portal.entities.Subject;
 
 @Repository
 public interface SubjectRepo extends JpaRepository<Subject, Serializable> {
-
+	Subject findOneBySubjectName(String subjectName);
 }

@@ -59,6 +59,7 @@ public class StudentService {
 	private StudentDto transformStudent(Student studentEntity) {
 		StudentDto sdto = new StudentDto();
 		sdto.setName(studentEntity.getName());
+		sdto.setDob(studentEntity.getDob());
 		sdto.setEmail(emailService.transformEmailEntity(studentEntity.getEmails()));
 		sdto.setPhone(phoneService.transformPhoneEntity(studentEntity.getPhones()));
 		sdto.setRollNo(studentEntity.getRollNo());
@@ -81,11 +82,15 @@ public class StudentService {
 		student.setAddresses(addressService.transformAddress(sdto.getAddress(),sdto.getRollNo()));
 		Course course = courseRepo.findOneByCode(sdto.getCourseCode());
 		student.setCourse(course);
+		System.out.println("Course is: " + course.getCode());
 		Department dept = deptRepo.findOneByCode(sdto.getDepartmentCode());
+		System.out.println("Department Course is: " + dept.getCourse());
+		System.out.println("RESULT: " + dept.getCourse().contains(course));
 		if(!dept.getCourse().contains(course)) {
 			System.out.println("inside ERROR Validation");
 			return ResponseMessage.VALIDATION_ERROR;
 		}
+		System.out.println("Department set");
 		student.setDepartment(dept);
 		student.setJoiningDate(sdto.getJoiningDate());
 		if(sdto.getSemester() > 0 && sdto.getSemester() <= 8 && student.getCourse().getCode().equals("BTECH")) {

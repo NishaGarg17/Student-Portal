@@ -1,6 +1,8 @@
 package com.java.student_portal.repository;
 
 import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.java.student_portal.entities.Teacher;
 

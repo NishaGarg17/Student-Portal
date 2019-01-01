@@ -44,9 +44,9 @@ public class PhoneService {
 	 
 	 List<Phone> transformPhone(List<PhoneDto> pdtoList,String uniqueKey) {
 		 List<Phone> phoneList = new ArrayList();
-		 if(uniqueKey.matches("[0-9]")) {
+		 if(uniqueKey.matches("[0-9]+")) {
 			phoneList = transformStudentPhone(pdtoList, uniqueKey);
-		} else if(uniqueKey.matches("[A-Za-z0-9]")) {
+		} else if(uniqueKey.matches("[A-Za-z0-9]+")) {
 			phoneList = transformTeacherPhone(pdtoList, uniqueKey);
 		}
 		 return phoneList;

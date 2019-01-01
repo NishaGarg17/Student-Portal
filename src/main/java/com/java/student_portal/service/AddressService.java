@@ -49,9 +49,9 @@ public class AddressService {
 	 
 	  List<Address> transformAddress(List<AddressDto> adtoList,String uniqueKey) {
 		  List<Address> addressList = new ArrayList<>();
-		  if(uniqueKey.matches("[0-9]")) {
+		  if(uniqueKey.matches("[0-9]+")) {
 			  addressList = transformStudentAddress(adtoList, uniqueKey);
-			} else if(uniqueKey.matches("[A-Za-z0-9]")) {
+			} else if(uniqueKey.matches("[A-Za-z0-9]+")) {
 				addressList = transformTeacherAddress(adtoList, uniqueKey);
 			}
 			 return addressList;
